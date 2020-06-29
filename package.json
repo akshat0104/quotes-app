@@ -11,12 +11,14 @@
   "dependencies": {
     "@sendgrid/mail": "^7.2.1",
     "body-parser": "^1.19.0",
-    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "hbs": "^4.1.1",
-    "inspirational-quotes": "^1.0.8"
+    "inspirational-quotes": "^1.0.8",
+    "nodemailer": "^6.4.10"
   },
   "devDependencies": {
-    "env-cmd": "^10.1.0"
+    "dotenv": "^8.2.0",
+    "env-cmd": "^8.0.2",
+    "nodemon": "^2.0.4"
   }
 }

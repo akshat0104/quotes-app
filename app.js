@@ -1,15 +1,14 @@
+require('dotenv').config()
+
+
 const quote = require('inspirational-quotes')
 const express = require('express')
 const path = require('path')
 const app = express()
 const bodyParser = require('body-parser')
 
-// using Twilio SendGrid's v3 Node.js Library
-require('dotenv').config()
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('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');
+const nodemailer = require('nodemailer')
 
-// for parsing application/json
 app.use(bodyParser.json()); 
 
 // for parsing application/xwww-
@@ -34,13 +33,29 @@ app.get('/', (req, res) =>{
 app.post('/submit',(req, res) =>{
     let mail = req.body.email
 
-const msg = {
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth:{
+        user: process.env.EMAIL,
+        pass: process.env.PASS
+    }
+})
+
+const mailOptions = {
+  from: process.env.EMAIL,
   to: mail,
-  from: 'joshiabhishek673@gmail.com',
   subject: 'Welcome!',
-  html: '<h2><strong>We are happy to see you here. Read some of the motivational quotes to keep yourself motivated</strong></h2>',
+  html: '<h2><strong>Welcome, <br>We are happy to see you here.Read some of the motivational quotes to keep yourself motivated</strong></h2>',
 };
-sgMail.send(msg);
+
+transporter.sendMail(mailOptions, (err, info) =>{
+    if(err){
+        console.log(err)
+    }
+    else{
+        console.log('Email sent ' + info.response)
+    }
+})
 
     res.redirect('quote')
 })
