@@ -44,7 +44,7 @@ const mailOptions = {
   from: process.env.EMAIL,
   to: mail,
   subject: 'Welcome!',
-  html: '<h2><strong>Welcome, <br>We are happy to see you here.Read some of the motivational quotes to keep yourself motivated</strong></h2>',
+  html: '<h2><strong>Welcome, <br>We are happy to see you here. Read some of the motivational quotes to keep yourself motivated</strong></h2>',
 };
 
 transporter.sendMail(mailOptions, (err, info) =>{
