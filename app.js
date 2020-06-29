@@ -33,10 +33,9 @@ app.post('/submit',(req, res) =>{
     let mail = req.body.email
 
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
+    service: 'gmail',
+    port: 25,
     secure: true,
-    // service: 'gmail',
     auth:{
         user: process.env.EMAIL,
         pass: process.env.PASS,
