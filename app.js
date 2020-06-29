@@ -1,6 +1,5 @@
 require('dotenv').config()
 
-
 const quote = require('inspirational-quotes')
 const express = require('express')
 const path = require('path')
