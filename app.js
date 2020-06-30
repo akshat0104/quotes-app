@@ -6,7 +6,8 @@ const path = require('path')
 const app = express()
 const bodyParser = require('body-parser')
 
-const nodemailer = require('nodemailer')
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 app.use(bodyParser.json()); 
 
@@ -32,36 +33,17 @@ app.get('/', (req, res) =>{
 app.post('/submit',(req, res) =>{
     let mail = req.body.email
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    port: 465,
-    secure: false,
-    
-    auth:{
-        user: process.env.EMAIL,
-        pass: process.env.PASS,
-
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-})
-
-const mailOptions = {
-  from: process.env.EMAIL,
-  to: mail,
-  subject: 'Welcome!',
-  html: '<h2><strong>Welcome, <br>We are happy to see you here. Read some of the motivational quotes to keep yourself motivated</strong></h2>',
-};
-
-transporter.sendMail(mailOptions, (err, info) =>{
-    if(err){
-        console.log(err)
-    }
-    else{
-        console.log('Email sent ' + info.response)
-    }
-})
+    const msg = {
+        from: 'joshiabhishek673@gmail.com',
+        to: mail,
+        subject: 'Welcome!',
+        html: '<h2><strong>Welcome, <br>We are happy to see you here. Read some of the motivational quotes to keep yourself motivated</strong></h2>',
+      }
+      sgMail.send(msg).then(() =>{
+          console.log('Message sent!')
+      }).catch((error) =>{
+          console.log(error.response.body);
+      })
 
     res.redirect('quote')
 })
