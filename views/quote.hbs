@@ -25,7 +25,7 @@
 <body>
 <div class="container">
 <div class="notepaper">
-  <figure class="quote" style="font-family: Monotype corsiva !important;">
+  <figure class="quote" style="font-family: Monotype corsiva;">
     <blockquote id="qt" class="curly-quotes">
       {{title}}
     </blockquote>
@@ -34,7 +34,7 @@
 </div>
 <button onclick="location.reload()" type="button" class="btn btn-outline-secondary" style="text-align: center; margin: 0 0 0 45%;">Get another quote</button>
 <br><br>
-<button onclick="copyToClipboard('#qt')" type="button" class="btn btn-outline-secondary" style="text-align: center; margin: 0 0 10% 45%;">Copy this quote</button>
+<button onclick="copyToClipboard('#qt')" type="button" class="btn btn-outline-secondary" style="text-align: center; margin: 0 0 1% 45%;">Copy this quote</button>
 <script>
   function copyToClipboard(element) {
   var $temp = $("<input>");
@@ -43,6 +43,7 @@
   document.execCommand("copy");
   $temp.remove();
 }
+</script>
 </div>
 <br>
 </script>
@@ -51,4 +52,3 @@
 
 </body>
 </html>
-
