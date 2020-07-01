@@ -17,12 +17,15 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monotype Corsiva">
+
+
   <title>Quote</title>
 </head>
 <body>
 <div class="container">
 <div class="notepaper">
-  <figure class="quote">
+  <figure class="quote" style="font-family: Monotype corsiva;">
     <blockquote id="qt" class="curly-quotes">
       {{title}}
     </blockquote>
@@ -31,7 +34,7 @@
 </div>
 <button onclick="location.reload()" type="button" class="btn btn-outline-secondary" style="text-align: center; margin: 0 0 0 45%;">Get another quote</button>
 <br><br>
-<button onclick="copyToClipboard('#qt,#auth')" type="button" class="btn btn-outline-secondary" style="text-align: center; margin: 0 0 0 45%;">Copy this quote</button>
+<button onclick="copyToClipboard('#qt,#auth')" type="button" class="btn btn-outline-secondary" style="text-align: center; margin: 0 0 10% 45%;">Copy this quote</button>
 <script>
   function copyToClipboard(element) {
   var $temp = $("<input>");
@@ -40,11 +43,11 @@
   document.execCommand("copy");
   $temp.remove();
 }
+</div>
+<br>
 </script>
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5efb93514411ab03"></script>
-</div>
-
 
 </body>
 </html>
