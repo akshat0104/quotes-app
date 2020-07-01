@@ -5,6 +5,12 @@ body {
     background-image: url('img.jpg');
   }
   
+  @media(max-width: 426px){
+    .notepaper{
+      margin: 6% auto 6% auto !important;
+      padding: auto !important;
+    }
+  }
   .notepaper {
     text-align: center;
     position: relative;
