@@ -30,7 +30,22 @@
   </figure>
 </div>
 <button onclick="location.reload()" type="button" class="btn btn-outline-secondary" style="text-align: center; margin: 0 0 0 45%;">Get another quote</button>
+<br><br>
+<button onclick="copyToClipboard('#qt,#auth')" type="button" class="btn btn-outline-secondary" style="text-align: center; margin: 0 0 0 45%;">Copy this quote</button>
+<script>
+  function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+</script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5efb93514411ab03"></script>
 </div>
+
+
 </body>
 </html>
 

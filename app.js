@@ -6,14 +6,10 @@ const path = require('path')
 const app = express()
 const bodyParser = require('body-parser')
 
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-
 app.use(bodyParser.json()); 
 
 // for parsing application/xwww-
 app.use(bodyParser.urlencoded({ extended: true })); 
-//form-urlencoded
 
 //Setting view engine as hbs
 app.set('view engine', 'hbs')
@@ -31,20 +27,12 @@ app.get('/', (req, res) =>{
 })
 
 app.post('/submit',(req, res) =>{
-    let mail = req.body.email
+    res.render('user', {
+        user: req.body.username
+    })
+})
 
-    const msg = {
-        from: 'joshiabhishek673@gmail.com',
-        to: mail,
-        subject: 'Welcome!',
-        html: '<h2><strong>Welcome, <br>We are happy to see you here. Read some of the motivational quotes to keep yourself motivated</strong></h2>',
-      }
-      sgMail.send(msg).then(() =>{
-          console.log('Message sent!')
-      }).catch((error) =>{
-          console.log(error.response.body);
-      })
-
+app.post('/quotes', (req, res) =>{
     res.redirect('quote')
 })
 
