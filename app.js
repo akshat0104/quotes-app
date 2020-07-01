@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 
 app.use(bodyParser.json()); 
 
-// for parsing application/xwww-
+// for parsing application
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 //Setting view engine as hbs
