@@ -17,6 +17,7 @@ app.use(express.static(__dirname + '/views')) //for html file
 app.set('views', path.join(__dirname, 'views'))
 
 const port = process.env.PORT || 3000
+//
 
 const server = app.listen(port,() =>{
     console.log('Server is up on ' + port + '  in %s mode', app.settings.env)
